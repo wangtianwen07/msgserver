@@ -1,0 +1,164 @@
+drop table if exists BK_DICT_CONVERT;
+drop table if exists BK_B0001_DATA;
+drop table if exists BK_A0001_DATA;
+drop table if exists BK_OPEN_CARD;
+drop table if exists BK_OPEN_CARD_RESULT;
+drop table if exists BK_A0001_YWSJJ;
+
+
+
+/*==============================================================*/
+/* Table: BK_DICT_CONVERT                                       */
+/*==============================================================*/
+create table BK_DICT_CONVERT
+(
+   BK_DICT_CONVERT_UUID varchar(32) not null comment '字典翻译主键',
+   DICT_NAME            varchar(50) comment '字典',
+   SYS_VAL              varchar(10) comment '系统值',
+   SYS_NAME             varchar(50) comment '系统名称',
+   BK_VAL               varchar(10) comment '银行值',
+   BK_NAME              varchar(50) comment '银行名称',
+   REAMRK               varchar(100) comment '备注',
+   primary key (BK_DICT_CONVERT_UUID)
+);
+
+alter table BK_DICT_CONVERT comment '字典对应';
+
+
+
+/*==============================================================*/
+/* Table: BK_B0001_DATA                                         */
+/*==============================================================*/
+create table BK_B0001_DATA
+(
+   BK_B0001_DATA_UUID   varchar(32) not null comment '会员优惠B0001主键',
+   CZLX                 varchar(2) comment '操作类型',
+   GLFS                 varchar(2) comment '关联方式',
+   GHBH                 varchar(32) comment '工会号',
+   ZJLX                 varchar(2) comment '证件类型',
+   ZJHM                 varchar(32) comment '证件号',
+   YHDM                 varchar(32) comment '优惠代码',
+   CREATE_TIME          date comment '创建时间',
+   SEND_STATE           varchar(2) comment '发送状态',
+   primary key (BK_B0001_DATA_UUID)
+);
+
+alter table BK_B0001_DATA comment '会员优惠B0001';
+
+
+
+/*==============================================================*/
+/* Table: BK_OPEN_CARD                                          */
+/*==============================================================*/
+create table BK_OPEN_CARD
+(
+   BK_OPEN_CARD_UUID    varchar(32) not null comment '批量开户主键',
+   SEQ_NO               varchar(32) comment '申请编号',
+   OPER_TYPE            varchar(2) comment '操作类型',
+   CARD_TYPE            varchar(2) comment '证件类型',
+   CARD_ID              varchar(32) comment '证件号码',
+   BIRTHDAY             varchar(8) comment '出生日期',
+   CARD_EXPIRE_DATE     varchar(8) comment '证件到期日',
+   FIRST_NAME           varchar(40) comment '姓/last name',
+   LAST_NAME            varchar(40) comment '名/first name',
+   CUS_SEX              varchar(2) comment '性别',
+   CUS_ADDR             varchar(120) comment '家庭地址栏1',
+   COMPANY_NAME         varchar(200) comment '单位名称',
+   COMPANY_CODE         varchar(20) comment '单位代码',
+   COMPANY_OPER         varchar(20) comment '单位代办人ID',
+   CERT_ADDR            varchar(120) comment '证件地址',
+   CUS_COUNTRY          varchar(2) comment '国藉别',
+   SEC_COUNTRY          varchar(2) comment '第二国籍',
+   CUS_NATIONNALITY     varchar(2) comment '民族',
+   VISA_TYPE            varchar(2) comment '签证类型',
+   VISA_EXPIRE_DATE     varchar(8) comment '签证到期日',
+   CUS_TEL              varchar(16) comment '电话',
+   COMPANY_TRADE        varchar(2) comment '单位所属行业',
+   WORK_TYPE            varchar(2) comment '职业代码',
+   IN_COME_LEVEL        varchar(2) comment '个人月收入',
+   TRADE_UNION_CARD_NO  varchar(32) comment '工会号',
+   OPER_ID              varchar(20) comment '处理柜员',
+   MARK_OPER            varchar(20) comment '营销员代码',
+   APPLY_DATE           varchar(8) comment '申请日期',
+   STDR1                varchar(32) comment '预留字段',
+   CREATE_TIME          date comment '创建时间',
+   SEND_STATE           varchar(2) comment '发送状态',
+   FILE_NAME            varchar(200) comment '文件名称',
+   ZZLB                 varchar(2) comment '制证类型',
+   primary key (BK_OPEN_CARD_UUID)
+);
+
+alter table BK_OPEN_CARD comment '批量开户';
+
+
+
+/*==============================================================*/
+/* Table: BK_OPEN_CARD_RESULT                                   */
+/*==============================================================*/
+create table BK_OPEN_CARD_RESULT
+(
+   BK_OPEN_CARD_RESULT_UUID varchar(32) not null comment '批量开户结果主键',
+   SEQ_NO               varchar(32) comment '申请编号',
+   CARD_TYPE            varchar(2) comment '证件类型',
+   CARD_ID              varchar(32) comment '证件号码',
+   FIRST_NAME           varchar(40) comment '姓/last name',
+   LAST_NAME            varchar(40) comment '名/first name',
+   CUS_SEX              varchar(2) comment '性别',
+   CARD_NO              varchar(35) comment '银行卡号',
+   ACT_TYPE             varchar(2) comment '账户类型',
+   RTN_CODE             varchar(6) comment '返回码',
+   RTN_MSG              varchar(100) comment '返回信息',
+   CREATE_TIME          date comment '创建时间',
+   FILE_NAME            varchar(200) comment '文件名称',
+   SEND_STATE           varchar(2) comment '发送状态',
+   REMARK               varchar(200) comment '处理结果',
+   primary key (BK_OPEN_CARD_RESULT_UUID)
+);
+
+alter table BK_OPEN_CARD_RESULT comment '批量开户结果';
+
+
+
+/*==============================================================*/
+/* Table: BK_A0001_DATA                                         */
+/*==============================================================*/
+create table BK_A0001_DATA
+(
+   BK_A0001_DATA_UUID   varchar(32) not null comment '文件发送银行接口A0001主键',
+   CZLX                 varchar(4) comment '操作类型',
+   WJS                  varchar(4) comment '发送文件数',
+   CREATE_TIME          date comment '创建时间',
+   SEND_STATE           varchar(2) comment '发送状态',
+   REMARK               varchar(200) comment '处理结果',
+   SENDER               varchar(50) comment '发送方',
+   primary key (BK_A0001_DATA_UUID)
+);
+
+alter table BK_A0001_DATA comment '文件发送银行接口A0001';
+
+
+
+/*==============================================================*/
+/* Table: BK_A0001_YWSJJ                                        */
+/*==============================================================*/
+create table BK_A0001_YWSJJ
+(
+   BK_A0001_YWSJJ_UUID  varchar(32) not null comment '文件发送银行A0001明细主键',
+   BK_A0001_DATA_UUID   varchar(32) comment '文件发送银行接口A0001主键',
+   WJM                  varchar(80) comment '文件名',
+   LJM                  varchar(200) comment '路径名',
+   ZKLX                 varchar(2) comment '制证类型',
+   YHBM                 varchar(5) comment '银行编码',
+   JYM                  varchar(50) comment '校验码',
+   FLAG                 varchar(2) comment '标志位',
+   SBYY                 varchar(2) comment '失败原因',
+   FHJYM                varchar(50) comment '返回校验码',
+   KKPC                 int comment '发送文件批次',
+   CREATE_TIME          date comment '创建时间',
+   primary key (BK_A0001_YWSJJ_UUID)
+);
+
+alter table BK_A0001_YWSJJ comment '文件发送银行A0001明细';
+
+alter table BK_A0001_YWSJJ add constraint FK_Reference_91 foreign key (BK_A0001_DATA_UUID)
+      references BK_A0001_DATA (BK_A0001_DATA_UUID) on delete restrict on update restrict;
