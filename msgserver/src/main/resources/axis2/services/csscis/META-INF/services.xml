@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviceGroup>
+	<service name="openCardService" targetNamespace="www.csscis.com">
+		<description>web service</description>
+		<parameter name="ServiceObjectSupplier">
+			org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier
+		</parameter>
+<!-- 		<module ref="axis2login"/> -->
+		<parameter name="SpringBeanName">wsOpenCardService</parameter>
+		<operation name="open">
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+		</operation>
+		<!-- 本地测试接口，用于测试银行接收报文 -->
+		<operation name="send">
+			<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-out"
+				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+		</operation>
+		<!-- //SpringBeanName名字是固定的不能改 -->
+	</service>
+</serviceGroup>

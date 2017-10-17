@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DATAPACKET VERSION="1.0">
+	<SAFEINFO>${safeinfo}</SAFEINFO><!-- 填写‘V1.0|应用服务器IP地址|用户名|密码’ -->
+	<WHERE>
+		<YWLX>${ywlx}</YWLX><!-- 填写各个业务规定的业务类型 -->
+		<JYLSH>${jylsh}</JYLSH><!-- 发送单位（见交易单位列表）+年月日时分秒+四位流水号；此编号由业务接口的发起方生成；返回时与发起相同；如“KA01201310271634560001” -->
+	</WHERE>
+	<DATASET>
+		<DATA>
+			<CZLX>${czlx}</CZLX><!-- 1 发送文件，通知对方接收 ,2 下载并校验，将结果反馈对方 -->
+			<WJS>${wjs}</WJS><!--非空 -->
+		</DATA>
+		<YWSJJ>
+			<WJM>${p.wjm}</WJM><!-- 非空 -->
+			<LJM>${p.ljm}</LJM><!-- 完整的路径名 -->
+			<WJLX>${p.wjlx}</WJLX><!-- 参见“文件类型”数据字典 -->
+			<YHBM>${p.yhbm}</YHBM><!-- 参见“机构和银行编码”数据字典 -->
+			<JYM>${p.jym}</JYM><!-- 用于校验文件完整性的MD5码，如果不设置校验可为空 -->
+			<FLAG>${p.flag}</FLAG><!-- 接收文件失败，反馈对方时填写 0 接收失败 1 接收成功 -->
+			<SBYY>${p.sbyy}</SBYY><!-- 接收文件失败，反馈对方时填写 1文件不存在 2文件校验不通过 3文件格式不符 4 文件名校验不通过 -->
+			<FHJYM>${p.fhjym}</FHJYM><!-- 接收文件失败，反馈对方时填写 当失败原因是2 返回本方新生成的MD5码 -->
+		</YWSJJ>
+	</DATASET>
+	<RETURN>
+		<IRETURN>${ireturn}</IRETURN><!-- 000000表示本业务处理成功，否则为本业务处理失败 -->
+		<MSGRETURN>${msgreturn}</MSGRETURN><!-- 返回处理失败的原因或系统信息提示 -->
+	</RETURN>
+</DATAPACKET>
+<!-- 3.1.1 工会卡文件发送银行接口（KACALLYH02） 3)	请求报文-->
